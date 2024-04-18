@@ -31,7 +31,7 @@ def funcao(x):
 def derivada(x):
     return 3 + math.exp(-x)
 
-#Chamada da função
+#Chamada da função e parâmetros iniciais
 x0 = 1.5
 raiz, tabela = newton_raphson(funcao, derivada, x0, tol=0.0001, max_iter=10)
 
