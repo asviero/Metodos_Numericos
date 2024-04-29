@@ -1,5 +1,5 @@
 #Método das Secantes
-def secant_method(f, x0, x1, tol, max_iter):
+def secantes(f, x0, x1, tol = 0.00001, max_iter = 100):
     iter_count = 0
     while iter_count < max_iter:
         #Utilizando o método
@@ -29,7 +29,7 @@ tolerance = 1e-6  # Tolerância
 max_iterations = 1000  # Número máximo de iterações
 
 # Chamando a função do método das secantes
-root, iterations = secant_method(f, x0, x1, tolerance, max_iterations)
+root, iterations = secantes(f, x0, x1, tolerance, max_iterations)
 
 print("A raiz encontrada é:", root)
 print("Número de iterações realizadas:", iterations)
