@@ -1,18 +1,18 @@
-#Método das Secantes
-<<<<<<< HEAD
-def secantes(f, x0, x1, tol = 0.00001, max_iter = 100):
-=======
+# Método das Secantes
 def secantes(f, x0, x1, tol, max_iter):
->>>>>>> 0c1734c8aa45256352a04feb20f013d4e5af7d88
     iter_count = 0
+    root_values = []  #Lista
     
     while iter_count < max_iter:
         #Utilizando o método
         x2 = x1 - (f(x1) * (x1 - x0)) / (f(x1) - f(x0))
 
+        #Adicionando os valores de x0, x1, e a raiz atual à lista
+        root_values.append((x0, x1, x2))
+        
         #Verifica se a diferença entre as duas últimas aproximações é menor que a tolerância
         if abs(x2 - x1) < tol:
-            return x2, iter_count + 1  # Retorna a raiz e o número de iterações realizadas
+            return x2, iter_count + 1, root_values  # Retorna a raiz, o número de iterações realizadas e a lista de valores
 
         #Atualiza os valores para a próxima iteração
         x0 = x1
@@ -20,7 +20,7 @@ def secantes(f, x0, x1, tol, max_iter):
         iter_count += 1
 
     #Se o número máximo de iterações for atingido sem convergência, retorna o valor atual de x
-    return x2, max_iter
+    return x2, max_iter, root_values
 
 #Função
 def f(x):
@@ -32,8 +32,14 @@ x1 = 2.1
 tolerance = 0.000001  # Tolerância
 max_iterations = 10  # Número máximo de iterações
 
-# Chamando a função do método das secantes
-root, iterations = secantes(f, x0, x1, tolerance, max_iterations)
+#Chamando a função do método das secantes
+root, iterations, root_values = secantes(f, x0, x1, tolerance, max_iterations)
 
 print("A raiz encontrada é:", root)
 print("Número de iterações realizadas:", iterations)
+
+#Imprimindo a tabela de valores de x0, x1, e a raiz de cada iteração
+print("\nTabela de valores de x0, x1, e a raiz de cada iteração:")
+print("Iteração |   x0   |   x1   |   Raiz")
+for i, (x0_val, x1_val, root_val) in enumerate(root_values):
+    print(f"{i+1:8d} | {x0_val:.6f} | {x1_val:.6f} | {root_val:.6f}")
