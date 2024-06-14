@@ -27,16 +27,6 @@ def gauss(A, b):
     return x
 
 """
-
-#Validação do Código
-A = np.array([[3, 2, 4],
-              [1, 1, 2],
-              [4, 3, -2]], dtype = float)
-
-b = np.array([1, 2, 3], dtype = float)
-"""
-
-"""
 #Exemplo 1
 A = np.array([[2, 2, 1, 1],
               [1, -1, 2, -1],
